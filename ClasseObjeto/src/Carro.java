@@ -7,12 +7,12 @@ public class Carro {
     public Carro(){
 
     }
-    public Carro(String marca, String modelo, String placa, boolean motor, float velAtual){
+    public Carro(String marca, String modelo, String placa){
         this.marca = marca;
         this.modelo = modelo;
         this.placa = placa;
-        this.motor = motor;
-        this.velAtual = velAtual;
+        this.motor = false;
+        this.velAtual = 0;
     }
     // ligar o carro
     public void ligar(){
@@ -25,7 +25,22 @@ public class Carro {
     public void desligar(){
         if (this.motor){
             this.motor = false;
+            this.velAtual = 0;
             System.out.println("Carro foi desligado");
+        }
+    }
+    // acelerar o carro de X unidades
+    public void acelerar(float x){
+        if (this.motor){
+            this.velAtual += x;
+            System.out.println("Nova velocidade " + this.velAtual);
+        }
+    }
+    // frear o carro
+    public void frear(float x){
+        if (this.motor && this.velAtual - x >= 0){
+            this.velAtual -= x;
+            System.out.println("Nova velocidade " + this.velAtual);
         }
     }
     // operações (métodos)
